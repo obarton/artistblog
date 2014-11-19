@@ -1,0 +1,39 @@
+{% extends 'artistblog/base.html' %}
+
+{% block title %}artistblog{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+    <h1>Register with artistblog</h1>
+    <br />
+    <div class="container">
+        {% if registered %}
+        <p>thank you for registering!</p>
+
+        <p><a href="/artistblog/login/">Login</a> when you are ready to artistblog.</p>
+        {% else %}
+        <h2 class="form-signin-heading">Sign up Here</h2>
+        <form class="form-signin span8" id="user_form" method="post" action="/artistblog/registerartist/"
+                enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Display each form here -->
+            {% for field in artist_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}<br />
+            {{ field }}<br />
+            {% endfor %}
+
+            {% for field in artist_profile_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}<br />
+            {{ field }}<br />
+            {% endfor %}
+
+            <br />
+            <!-- Provide a button to click to submit the form. -->
+            <input class="btn btn-primary" type="submit" name="submit" value="Register Artist" />
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

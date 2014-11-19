@@ -1,0 +1,12 @@
+{% extends 'artistblog/base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+        <h1>About Page</h1>
+        Message: <strong>{{ aboutmessage }}</strong><br />
+        <img src="{% static "Lighthouse.jpg" %}" alt="Picture of a Lighthouse" /> <!--New line-->
+</div>
+{% endblock %}
